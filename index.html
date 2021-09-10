@@ -30,7 +30,7 @@
             width: 70%;
             border: 2px solid black;
             padding: 5px;
-            background-image: linear-gradient(to right, rgb(242, 44, 5), rgb(204, 81, 9), rgb(167, 118, 12), rgb(129, 156, 16), rgb(92, 193, 19), rgb(54, 230, 23), rgb(47, 231, 60), rgb(41, 231, 97), rgb(34, 232, 134), rgb(27, 232, 171), rgb(21, 233, 208), rgb(14, 233, 245));
+            background-image: linear-gradient(to top, rgb(99, 255, 99), rgb(109, 241, 107), rgb(119, 228, 115), rgb(128, 214, 123), rgb(138, 201, 131), rgb(148, 187, 139), rgb(158, 174, 147), rgb(168, 160, 155), rgb(178, 147, 163), rgb(187, 133, 171), rgb(197, 120, 179), rgb(207, 106, 187));
         }
         #generate{
             clear: both;
@@ -44,7 +44,7 @@
             font-size: 30px;
             text-align:right;
             font-style: italic;
-            margin: 10px 30px 0 0;
+            margin: 10px 40px 0 0;
         }
         #author::before{
             content: "\f1fa";
@@ -72,7 +72,7 @@
         a{
             padding:5px;
             display: block;
-            margin:20px 50px;
+            margin:10px;
             width:100px;
             text-align: center;
             font-size: 50px;
@@ -94,8 +94,8 @@
             width:60px;
             padding: 5px;
             font-size: 50px;
-            opacity:0.2;
-            border: 2px solid black;
+            opacity:0.5;
+            border: 5px solid rgb(253, 5, 5);
             float: right;
         }
         #copy:hover{
@@ -127,10 +127,10 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-body bg-success">
-                                <button class="close text-danger" data-dismiss="modal">
+                                <button class="close" data-dismiss="modal">
                                     <span>&times;</span>
                                 </button>
-                                <p class="text-white">text copied successfully</p>
+                                <p class="text-white lead">text copied successfully</p>
                             </div>
                         </div>
                     </div>
@@ -140,7 +140,7 @@
         <p id="author">Author name</p>
     </div>
         <button id="quote" onclick="newquote()">generate quote</button>
-        <a id="tweet" href="https://twitter.com/intent/tweet?text=greeting" aria-disabled="true" title="share in twitter" data-toggle="tooltip" data-placement="right"><i class="fab fa-twitter"></i></a>
+        <a target="_blank" id="tweet" href="https://twitter.com/intent/tweet?text=greeting" aria-disabled="true" title="share in twitter" data-toggle="tooltip" data-placement="right"><i class="fab fa-twitter"></i></a>
     </div>
     <script>
         const text=document.getElementById("quote-display");
