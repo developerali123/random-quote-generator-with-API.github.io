@@ -17,114 +17,9 @@
     <!-- bootstrap.js link -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
     <title>random quote generator</title>
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing: border-box;
-        }
-        body{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: #f39c12;
-            min-height: 100vh;
-        }
-        .container{
-            width: 70%;
-            border: 2px solid black;
-            padding: 5px;
-            background-image: linear-gradient(to top, rgb(99, 255, 99), rgb(109, 241, 107), rgb(119, 228, 115), rgb(128, 214, 123), rgb(138, 201, 131), rgb(148, 187, 139), rgb(158, 174, 147), rgb(168, 160, 155), rgb(178, 147, 163), rgb(187, 133, 171), rgb(197, 120, 179), rgb(207, 106, 187));
-        }
-        #generate{
-            clear: both;
-            padding: 5px;
-            margin: 5px;
-        }
-        #quote-display{
-            font-size: 35px;
-        }
-        #author{
-            font-size: 30px;
-            text-align:right;
-            font-style: italic;
-            margin: 10px 40px 0 0;
-        }
-        #author::before{
-            content: "\f1fa";
-            font-family: FontAwesome;
-            margin-right: 10px;
-        }
-        #quote {
-            margin: 10px;
-            padding: 15px 45px;
-            text-align: center;
-            text-transform: uppercase;
-            transition: 0.5s;
-            background-size: 200% auto;
-            color: white;            
-            box-shadow: 0 0 20px #eee;
-            border-radius: 10px;
-            display: block;
-            background-image: linear-gradient(to right, #DC2424 0%, #4A569D  51%, #DC2424  100%)
-        }
-        #quote:hover {
-            background-position: right center;
-            color: #fff;
-            text-decoration: none;
-        }
-        a{
-            padding:5px;
-            display: block;
-            margin:10px;
-            width:100px;
-            text-align: center;
-            font-size: 50px;
-            color:blue;
-        }
-        /* Adding cursor just works: */
-        a[aria-disabled="true"] {
-            cursor: not-allowed;
-        }
-        #copy[aria-disabled="true"] {
-            pointer-events: none;
-        }
-        /* Makes link non-clickable: */
-        a[aria-disabled="true"]:active {
-            pointer-events: none;
-        }
-        #copy{
-            display: block;
-            width:60px;
-            padding: 5px;
-            font-size: 50px;
-            opacity:0.5;
-            border: 5px solid rgb(253, 5, 5);
-            float: right;
-        }
-        #copy:hover{
-            cursor: pointer;
-            opacity: 1;
-        }
-        @media screen and (max-width:320px) {
-            #quote-display,#author{
-                font-size: 23px;
-            }     
-            .container{
-                width: 90%;
-            }   
-            a{
-                margin: 10px;
-            }    
-            #copy{
-                font-size: 30px;
-                width: fit-content;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body  oncontextmenu="return false;">
+<body  oncontextmenu="false;">
     <h1>Random quote generator</h1>
     <div class="container">
         <i id="copy" class="fas fa-copy" onclick="copy()" aria-disabled="true" data-toggle="modal" data-target="#modalbox"></i>
@@ -147,43 +42,6 @@
         <button id="quote" onclick="newquote()">generate quote</button>
         <a target="_blank" id="tweet" href="https://twitter.com/intent/tweet?text=greeting" aria-disabled="true" title="share in twitter" data-toggle="tooltip" data-placement="right"><i class="fab fa-twitter"></i></a>
     </div>
-    <script>
-        const text=document.getElementById("quote-display");
-        const authorname=document.getElementById("author");
-        const tweetbutton=document.getElementById("tweet");
-        const copy1=document.getElementById("copy");
-        async function newquote(){
-        var url="https://type.fit/api/quotes";
-        const response=await fetch(url);
-        const allquotes=await response.json();
-        const index=Math.floor(Math.random()*allquotes.length);
-        const quote=allquotes[index].text;
-        const author=allquotes[index].author;
-        if(author==null){
-            author="Muhammad ali mirza";
-        }
-        text.innerHTML=quote;
-        authorname.innerHTML=author;
-        tweetbutton.removeAttribute("aria-disabled");
-        copy1.removeAttribute("aria-disabled");
-        tweetbutton.href="https://twitter.com/intent/tweet?text="+quote+"  "+author;
-        };
-        function copy(){
-            var copytext=document.getElementById("quote-display").innerHTML;
-            var copyauthor=document.getElementById("author").innerHTML;
-            var finaltext=copytext.concat(" by "+copyauthor);
-            navigator.clipboard.writeText(finaltext).then(()=>{
-                console.log("text is copied");
-            }).catch(()=>{
-                console.log("error");
-            })
-        }
-        $(document).ready(function(){
-            $("[data-toggle='tooltip']").tooltip();
-            $("#copy").click(function(){
-                $("#modalbox").modal("show");
-            })
-        })
-    </script>
+    <script src="index.js"></script>
 </body>
 </html>

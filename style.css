@@ -1,0 +1,104 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f39c12;
+    min-height: 100vh;
+}
+.container{
+    width: 70%;
+    border: 2px solid black;
+    padding: 5px;
+    background-image: linear-gradient(to top, rgb(99, 255, 99), rgb(109, 241, 107), rgb(119, 228, 115), rgb(128, 214, 123), rgb(138, 201, 131), rgb(148, 187, 139), rgb(158, 174, 147), rgb(168, 160, 155), rgb(178, 147, 163), rgb(187, 133, 171), rgb(197, 120, 179), rgb(207, 106, 187));
+}
+#generate{
+    clear: both;
+    padding: 5px;
+    margin: 5px;
+}
+#quote-display{
+    font-size: 35px;
+}
+#author{
+    font-size: 30px;
+    text-align:right;
+    font-style: italic;
+    margin: 10px 40px 0 0;
+}
+#author::before{
+    content: "\f1fa";
+    font-family: FontAwesome;
+    margin-right: 10px;
+}
+#quote {
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+    background-image: linear-gradient(to right, #DC2424 0%, #4A569D  51%, #DC2424  100%)
+}
+#quote:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+}
+a{
+    padding:5px;
+    display: block;
+    margin:10px;
+    width:100px;
+    text-align: center;
+    font-size: 50px;
+    color:blue;
+}
+/* Adding cursor just works: */
+a[aria-disabled="true"] {
+    cursor: not-allowed;
+}
+#copy[aria-disabled="true"] {
+    pointer-events: none;
+}
+/* Makes link non-clickable: */
+a[aria-disabled="true"]:active {
+    pointer-events: none;
+}
+#copy{
+    display: block;
+    width:60px;
+    padding: 5px;
+    font-size: 50px;
+    opacity:0.5;
+    border: 5px solid rgb(253, 5, 5);
+    float: right;
+}
+#copy:hover{
+    cursor: pointer;
+    opacity: 1;
+}
+@media screen and (max-width:320px) {
+    #quote-display,#author{
+        font-size: 23px;
+    }     
+    .container{
+        width: 90%;
+    }   
+    a{
+        margin: 10px;
+    }    
+    #copy{
+        font-size: 30px;
+        width: fit-content;
+    }
+}
